@@ -9,6 +9,9 @@ my_label = Label(root, text="", font=("Helvetica", 32))
 my_label.pack(pady=20)
 
 def shuffle_word():
+    global word
+
+
 
     states = [
         "Alabama", "Alaska", "Arizona", "Arkansas",
@@ -43,12 +46,17 @@ def shuffle_word():
     # Display the shuffled word
     my_label.config(text=shuffled_word)
 
-
+    return break_apart_word
 my_button = Button(
     root,
     text="Shuffle",
-    command=shuffle_word
+    command=lambda: [shuffle_word(), list_puzzle()]
 )
-my_button.pack(pady=20)
+def list_puzzle():
 
+    global word
+    # Create a new window for the puzzle
+    print(word)
+my_button.pack(pady=20)
 root.mainloop()
+list_puzzle()
